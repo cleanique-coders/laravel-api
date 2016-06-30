@@ -24,5 +24,6 @@ Route::group([
 	Route::group(['prefix' => 'v1'],function(){
 		Route::post('/login','Auth\AuthenticateController@login');
 		Route::post('/signup','Auth\AuthenticateController@signup');
+		Route::get('/user/profile','Auth\AuthenticateController@user');
 	});
 });

@@ -45,4 +45,14 @@ class AuthenticateController extends Controller
 
 		return response()->json(compact('token'));
     }
+
+    public function user()
+	{
+	    if(! $user = JWTAuth::parseToken()->authenticate()) {
+            return response()->json(['user_not_found'], 404);
+        }
+
+	    // the token is valid and we have found the user via the sub claim
+	    return response()->json(compact('user'));
+	}
 }
